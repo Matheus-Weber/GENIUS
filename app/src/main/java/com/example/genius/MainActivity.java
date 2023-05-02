@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0;i < x;i++){
 
-            sorteador = 1; //random.nextInt(4)+1;
+            sorteador = (random.nextInt(4)+1);
             vet[i] = sorteador;
 
             piscar(sorteador);
@@ -63,14 +63,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void piscar(int cor){ //Para piscar uma cor
-
+        Handler handler = new Handler();
         if (cor == 1){ // VERDE
 
             //muda de cor
             btn1.setBackgroundColor(Color.parseColor("#008000"));
 
-            Handler handler1 = new Handler();
-            handler1.postDelayed(new Runnable() {
+
+            handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     //retornar a cor original
@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
             //muda de cor
             btn2.setBackgroundColor(Color.parseColor("8B0000"));
 
-            Handler handler2 = new Handler();
-            handler2.postDelayed(new Runnable() {
+
+            handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     //retornar a cor orginal
@@ -97,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
             //muda de cor
             btn3.setBackgroundColor(Color.parseColor("B8860B"));
 
-            Handler handler3 = new Handler();
-            handler3.postDelayed(new Runnable() {
+
+            handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     //retornar a cor original
@@ -111,8 +111,8 @@ public class MainActivity extends AppCompatActivity {
             //muda de cor
             btn4.setBackgroundColor(Color.parseColor("0000FF"));
 
-            Handler handler4 = new Handler();
-            handler4.postDelayed(new Runnable() {
+
+            handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     //retornar a cor original
@@ -156,10 +156,10 @@ public class MainActivity extends AppCompatActivity {
             gameOver();
         }
 
-        c++;
+        c += 1;
 
         if(c == x){
-            x++;
+            x += 1;
             c=0;
             Jogo();
         }
