@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0;i < x;i++){
 
-            sorteador = (random.nextInt(4)+1);
+            sorteador = (random.nextInt(4)+1); //sorteando uma cor
             vet[i] = sorteador;
 
             piscar(sorteador);
