@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
             sorteador = (random.nextInt(4)+1); //sorteando uma cor
             vet[i] = sorteador;
 
-
-
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
