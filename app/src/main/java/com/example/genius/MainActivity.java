@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         txt2 = findViewById(R.id.txt2);
     }
 
-    int x = 1;
+    public int x = 1;
     int c = 0;
     int recorde = 0;
     int[] vet = new int[100]; //sequencia de cores do jogo
@@ -59,15 +59,15 @@ public class MainActivity extends AppCompatActivity {
             sorteador = (random.nextInt(4)+1); //sorteando uma cor
             vet[i] = sorteador;
 
-            piscar(sorteador);
+
 
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    //tempo para sortear a próxima cor
+                    piscar(sorteador);
                 }
-            },400);
+            },500);
 
         }
     }
