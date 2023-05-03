@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import java.util.Random;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
+//import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
+//import android.widget.Button;
+//import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn1 = (AppCompatButton) findViewById(R.id.btn1);
-        btn2 = (AppCompatButton) findViewById(R.id.btn1);
-        btn3 = (AppCompatButton) findViewById(R.id.btn1);
-        btn4 = (AppCompatButton) findViewById(R.id.btn1);
-        txt1 = (TextView) findViewById(R.id.txt1);
-        txt2 = (TextView) findViewById(R.id.txt2);
+        btn1 = findViewById(R.id.btn1);
+        btn2 = findViewById(R.id.btn2);
+        btn3 = findViewById(R.id.btn3);
+        btn4 = findViewById(R.id.btn4);
+        txt1 = findViewById(R.id.txt1);
+        txt2 = findViewById(R.id.txt2);
     }
 
     int x = 1;
@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     int sorteador = 0;
 
     public void novoJogo(View view){
+        String frase = "Novo Jogo, Boa Sorte!";
+        txt1.setText(frase);
         x = 1; //numero para saber quantas cores serão sorteadas
         c = 0; //numero para conferir a cor por click
 
@@ -59,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
 
             piscar(sorteador);
 
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    //tempo para sortear a próxima cor
+                }
+            },400);
+
         }
     }
 
@@ -66,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         Handler handler = new Handler();
         if (cor == 1){ // VERDE
 
-            //muda de cor
+            //mudar de cor
             btn1.setBackgroundColor(Color.parseColor("#008000"));
 
 
@@ -80,36 +90,35 @@ public class MainActivity extends AppCompatActivity {
 
         } else if (cor == 2) { // VERMELHO
 
-            //muda de cor
-            btn2.setBackgroundColor(Color.parseColor("8B0000"));
-
+            //mudar de cor
+            btn2.setBackgroundColor(Color.parseColor("#8B0000"));
 
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     //retornar a cor orginal
-                    btn2.setBackgroundColor(Color.parseColor("FA8072"));
+                    btn2.setBackgroundColor(Color.parseColor("#FA8072"));
                 }
             }, 500);
 
         } else if (cor == 3) { // AMARELO
 
             //muda de cor
-            btn3.setBackgroundColor(Color.parseColor("B8860B"));
+            btn3.setBackgroundColor(Color.parseColor("#B8860B"));
 
 
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     //retornar a cor original
-                    btn3.setBackgroundColor(Color.parseColor("F0E68C"));
+                    btn3.setBackgroundColor(Color.parseColor("#F0E68C"));
                 }
             }, 500);
 
         }else{ // AZUL
 
             //muda de cor
-            btn4.setBackgroundColor(Color.parseColor("0000FF"));
+            btn4.setBackgroundColor(Color.parseColor("#0000FF"));
 
 
             handler.postDelayed(new Runnable() {
@@ -167,10 +176,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gameOver(){
-        txt1.setText("Você Perdeu, Clique em Novo Jogo!, Seu Score é " + x);
+        String frase1 = "Você Perdeu, Clique em Novo Jogo!, Seu Score é " + x;
+        txt1.setText(frase1);
         if(x>recorde){
             recorde=x;
-            txt2.setText("Recorde: " + x);
+            String frase2 = "Recorde: " + x;
+            txt2.setText(frase2);
         }
     }
 
